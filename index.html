@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="page.css">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+<style>
+  .inputArea{
+background-color: deepskyblue;
+position: relative;
+height: 30px auto;
+border-radius: 10px;
+padding: 10px;
+}
+.paragraphCss{
+
+  margin: 0;
+  font-size: 20px;
+  cursor: pointer;
+}
+.MyClass{
+  background-color: #FC4445;
+  color: white;
+  border-radius: 5px;
+  border: none;
+
+}
+#btn{
+   background-color: #FC4445 ;
+   border: none;
+   border-radius: 3px;
+   height: 30px;
+   width: 50px;
+   color: white;
+}
+body{
+  display: flex;
+  text-align: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+}
+.container{
+  width: 400px;
+}
+.textInput{
+border-radius: 10px;
+}
+
+</style>
+
+    <title>To-do list</title>
+  </head>
+  <body>
+    
+  	<section  style="background-color:silver; border-radius: 5px;" class="container text-center col-md-12">
+
+  	<div  class="">
+  		<div class="row">
+                      <h1 style="color:white;">To-do list</h1>
+                      <p style="color:white;">Single click the To do  to be assigned done.</p>
+                      <p style="color:white;">Bouble click the To do to deleted</p>
+        <div class="inputArea">
+  
+  			<div class="">
+  				<input type="text" name="textInput" id="textInput" placeholder="Enter your To-do"><input type="button" name="" value="+" id="btn">
+          </div>
+  				<div class="resultBox" id="resultBox">
+  				<div id="toDoList" class="result"></div>
+  				</div>
+  			</div>
+  		</div>
+  	</div>
+  	</section>
+  	<script>
+  		let btn = document.getElementById("btn");
+  		let toDoList = document.getElementById("toDoList");
+  		let textInput = document.getElementById("textInput");
+
+ btn.addEventListener('click', function(){
+ 	if (textInput==="") {
+ 		alert("Please Add In Input");
+ 	}
+ 	else{
+
+
+var paragraph = document.createElement('p');
+var deleteBtn = document.createElement('button');
+paragraph.classList.add('deleteBtn');
+paragraph.classList.add('paragraphCss');
+paragraph.innerText = textInput.value;
+var img = `<i class="fa fa-trash"></i>`;
+deleteBtn.classList.add('MyClass');
+
+deleteBtn.innerText = "delete";
+toDoList.appendChild(paragraph);
+if (textInput.value ==="") {
+	alert("Please add and imput")
+}
+else{
+toDoList.appendChild(deleteBtn);
+}
+
+textInput.value = null;
+ paragraph.addEventListener('click', function(){
+	paragraph.style.textDecoration = "Line-through"
+})
+  deleteBtn.addEventListener('click', function(){
+  	toDoList.removeChild(deleteBtn);
+    toDoList.removeChild(paragraph);
+
+})
+
+}  		})
+
+
+  		
+  	</script>
+   
+  </body>
+</html>
